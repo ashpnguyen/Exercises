@@ -1,0 +1,53 @@
+<html>
+  <body>
+
+    <div>
+      <img id="image_1" src="https://pbs.twimg.com/media/Dnds_5bVAAAG25M.jpg" height="100" width="100">
+      <img id="image_2" src="https://pbs.twimg.com/media/DkKr45-V4AAOdz9.jpg" height="100" width="100">
+      <img id="image_3" src="https://pbs.twimg.com/media/DmoAIfIUcAAMYM8.jpg" height="100" width="100">
+    </div>
+
+    <script>
+    document.getElementById('image_1').addEventListener('click', () => {
+      image_1.parentNode.removeChild(image_1);
+    });
+    document.getElementById('image_2').addEventListener('click', () => {
+      image_2.parentNode.removeChild(image_2);
+    });
+    document.getElementById('image_3').addEventListener('click', () => {
+      image_3.parentNode.removeChild(image_3);
+    });
+    </script>
+
+    <div>
+      Name: <input type="text" id="name" size="30" /> <br>
+      Birthday: <input type="date" id="birthday" /> <br>
+      <button id="go"> Show my age</button>
+    </div>
+    <div id="output"></div>
+
+    <script>
+    document.getElementById('go').addEventListener('click', () => {
+      let now = new Date(),
+        birthday = document.getElementById('birthday').valueAsDate;
+
+        let age = Math.floor((now - birthday ) / ( 1000 * 60 * 60 * 24 * 365.25 ));
+
+        document.getElementById('output').innerHTML = "You are " + age + " years old ";
+      });
+    </script>
+
+      <script>
+      function node_path(node) {
+        let result = [];
+        while ( node.parentNode ) {
+          result.unshift(node.nodeName);
+          node = node.parentNode;
+        }
+        return result;
+      }
+      console.log(node_path(document.getElementById('image_1')));
+    </script>
+
+  </body>
+</html>
