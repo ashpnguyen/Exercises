@@ -1,0 +1,48 @@
+<html>
+  <body>
+    <div id="image"></div>
+    <div id="output"></div>
+    <script id='info'>
+      let song_info = [
+    {
+      title: "Getting Away with It (All Messed Up)",
+      artist: "James",
+      album: "Pleased to Meet You",
+      year: 2001,
+      art: "https://upload.wikimedia.org/wikipedia/en/2/2a/JamesPleasedToMeetYou.jpg"
+    },
+    {
+      title: "Renaissance Affair",
+      artist: "Hooverphonic",
+      album: "Blue Wonder Power Milk",
+      year: 1998,
+      art: "https://upload.wikimedia.org/wikipedia/en/1/17/Hooverphonic-Blue_Wonder_Power_Milk.jpg"
+    },
+    {
+      title: "White Nights",
+      artist: "Oh Land",
+      album: "Oh Land",
+      year: 2011,
+      art: "https://upload.wikimedia.org/wikipedia/en/6/68/Oh_Land_%28album%29.png"
+    }];
+
+    let art = [];
+    song_info.forEach(function(record){
+      art.push(record.art);
+    });
+
+    let show_image = document.getElementById('image');
+
+    for (let i = 0; i < art.length; i++){
+      let counter = 0;
+      let img = document.createElement('img');
+      img.src = art[i];
+      show_image.appendChild(img);
+      show_image.addEventListener('click', () => {
+        console.log(i);
+        output.innerHTML = song_info[i].title;
+      });
+    }
+    </script>
+  </body>
+</html>
