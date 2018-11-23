@@ -38,9 +38,12 @@
       let img = document.createElement('img');
       img.src = art[i];
       show_image.appendChild(img);
-      show_image.addEventListener('click', () => {
+      img.addEventListener('click', () => {
         console.log(i);
-        output.innerHTML = song_info[i].title;
+        output.innerHTML = "Title:" + " " + song_info[i].title + "<br />"
+        + "Artist:" + " " + song_info[i].artist + "<br />"
+        + "Album:" + " " + song_info[i].album + "<br />"
+        + "Year:" + " " + song_info[i].year;
       });
     }
     </script>
