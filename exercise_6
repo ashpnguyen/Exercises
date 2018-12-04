@@ -116,5 +116,3 @@ console.log(Time4.toString());
 console.log(Time1.compareTo(Time2));
 console.log(Time2.compareTo(Time1));
 console.log(Time4.isBetween(Time1, Time2));
-//this is wrong bc 3:50:40AM IS between 3:35:12AM and 4:14:30AM so
-//unsure why it is returning false
