@@ -86,31 +86,64 @@ class MyTime {
     }
   }
 
-  isBetween(start, end) {
-    if (this._hours >= start._hours && this._hours <= end._hours) {
-      return true;
-    } else if (this._hours <= start._hours && this._hours >= end._hours) {
-      return true;
+//   isBetween(start, end) {
+//     if (this._hours > start._hours && this._hours < end._hours) {
+//       return true;
+//     } else if (this._minutes > start._minutes && this._minutes < end._minutes) {
+//       return true;
+//     } else {
+//       if (this._seconds > start._seconds && this._seconds < end._seconds) {
+//         return true;
+//       } else {
+//         return false;
+//       }
+//     }
+//   }
+// }
+
+isBetween(start, end) {
+  if (this._hours < start._hours || this._hours > end._hours) {
+    return false;
+  } else if (this._hours == start._hours) {
+    if (this._minutes < start._minutes) {
+      return false;
     } else {
-      if (this._minutes >= start._minutes && this._minutes <= end._minutes) {
-        return true;
-      } else if (this._minutes <= start._minutes && this._minutes >= end.minutes) {
-        return true;
+      if (this._seconds <= start._seconds) {
+        return false;
       } else {
-        if (this._seconds >= start._seconds && this._seconds <= end._seconds) {
-          return true;
-        } else if (this._seconds <= start._seconds && this._seconds >= end._seconds) {
-          return true;
-        } else {
-          return false;
+        if (this._hours == end._hours) {
+          if (this._minutes > end._minutes) {
+            return false;
+          } else {
+            if (this._seconds >= end._seconds) {
+              return false;
+            } else {
+              return true;
+            }
+          }
         }
       }
     }
+  } else {
+    if (this._hours == end._hours) {
+      if (this._minutes > end._minutes) {
+        return false;
+      } else {
+        if (this._seconds >= end._seconds) {
+          return false;
+        } else {
+          return true;
+        }
+      }
+    } else if (this._hours < end._hours) {
+      return true;
+    }
   }
+}
 }
 
 Time1 = new MyTime(4, 14, 30);
-Time2 = new MyTime(3, 35, 12);
+Time2 = new MyTime(2, 35, 12);
 Time3 = new MyTime(99, 99, 99);
 Time4 = new MyTime(3, 50, 40);
 Time5 = new MyTime(24, 12, 55);
@@ -121,4 +154,5 @@ console.log(Time5.toString());
 console.log(Time1.compareTo(Time2));
 console.log(Time2.compareTo(Time1));
 console.log(Time4.isBetween(Time1, Time2));
-console.log(Time5.isBetween(Time1, Time2));
+//this is wrong bc 3:50:40AM IS between 2:35:12AM and 4:14:30AM so
+//unsure why it is returning false
