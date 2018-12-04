@@ -2,19 +2,19 @@ class MyTime {
 
   constructor(hours, minutes , seconds) {
     if (hours >= 0 && hours <= 23){
-      this._hours = parseInt(hours);
+      this._hours = hours;
     } else {
       console.log("ERROR inputted hour for" + " " + hours + " " + "is invalid!");
     }
 
     if (minutes >= 0 && minutes < 60){
-      this._minutes = parseInt(minutes);
+      this._minutes = minutes;
     } else {
       console.log("ERROR: inputted minutes for" + " " + minutes + " " + "is invalid!");
     }
 
     if (seconds >= 0 && seconds < 60){
-      this._seconds = parseInt(seconds);
+      this._seconds = seconds;
     } else {
       console.log("ERROR: inputted seconds for" + " " + seconds + " " + "is invalid!");
     }
@@ -97,7 +97,7 @@ class MyTime {
   }
 
   isBetween(start, end) {
-    if (this.compareTo(start) <= 0 || this.compareTo(end) >= 0) {
+    if (this.compareTo(start) > 0 && this.compareTo(end) < 0) {
       return false;
     } else {
       return true;
@@ -106,7 +106,7 @@ class MyTime {
 }
 
 Time1 = new MyTime(4, 14, 30);
-Time2 = new MyTime(2, 35, 12);
+Time2 = new MyTime(3, 35, 12);
 Time3 = new MyTime(99, 99, 99);
 Time4 = new MyTime(3, 50, 40);
 
