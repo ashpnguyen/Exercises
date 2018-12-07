@@ -1,0 +1,129 @@
+class Media {
+  constructor(name, duration) {
+    this._name = name;
+    this._duration = duration;
+  }
+
+  report() {
+    console.log("Name: " + this._name + " Duration: " + this._duration + " minutes");
+  }
+
+  static compareName(a,b) {
+    if (a._name < b._name) {
+      return -1
+    } else if (a._name > b._name) {
+      return 1
+    } else {
+      return 0;
+    }
+  }
+
+  static compareDuration(a,b) {
+    if (a._duration < b._duration) {
+      return -1
+    } else if (a._duration > b._duration){
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+}
+
+
+class Movies extends Media {
+  constructor(name, duration, rating) {
+    super(name, duration);
+    this._rating = rating;
+  }
+
+  static compareRating(){
+
+  }
+}
+
+class Music extends Media {
+  constructor(name, duration, artist){
+    super(name, duration);
+    this._artist = artist;
+  }
+
+  static compareArtist(){
+
+  }
+}
+
+class Podcast extends Media {
+  constructor(name, duration){
+    super(name, duration);
+  }
+}
+
+class MyPlaylist {
+  constructor(){
+    this._playlist = [];
+    this._current = 0;
+  }
+
+  toString(){
+    console.log(this._playlist);
+  }
+
+  add(Media) {
+    this._playlist.push(Media);
+  }
+
+  playing() {
+    return this._playlist[this._current]._name;
+  }
+
+  next() {
+    this._current++;
+    if (this._current >= this._playlist.length){
+      this._current = 0;
+    }
+  }
+
+  sortByName() {
+    if (this._playlist > 1) {
+      this._playlist.sort((a,b) => {
+        if (a._name < b.name) {
+          return -1;
+        } else if (a.name > b.name){
+          return 1;
+        } else {
+          return 0;
+        }
+      })
+    } else if (this._playlist.length == 0) {
+      console.log("Playlist is empty!");
+    } else {
+      return this._playlist[this._current]._name;
+    }
+  }
+
+  sortByDuration(){
+    this._playlist.sort(compareDuration(a,b));
+  }
+
+  sortByArtist(){
+
+  }
+
+  sortByRating(){
+
+  }
+}
+
+// var movie = new Movies("MOVIE", 120);
+// var music = new Music("SONG", 3);
+//
+// movie.report();
+// music.report();
+//
+// var playlist = new MyPlaylist();
+// playlist.add(music);
+// playlist.add(movie);
+//
+// console.log(playlist.playing());
+// playlist.next();
+// console.log(playlist.playing());
